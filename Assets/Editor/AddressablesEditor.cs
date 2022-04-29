@@ -6,13 +6,20 @@ using System.IO;
 using System.Text;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using UnityEditor.AddressableAssets.Settings;
+using UnityEditor.SceneManagement;
 
 public class AddressablesEditor
 {
     [MenuItem("Tools/Asset Management/Build Content Update")]
     public static string BuildContentUpdate()
     {
-        return CheckAndUpdateContent();
+        if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            AssetDatabase.SaveAssets();
+            return CheckAndUpdateContent();
+        }
+
+        return string.Empty;
     }
 
     public static string CheckAndUpdateContent(string activeProfileId = "Default")
@@ -40,7 +47,7 @@ public class AddressablesEditor
                     }
 
                     // 为更新资源创建新的分组，并设置默认分组使用的模板设置
-                    var groupName = string.Format("UpdateGroup_{0}", System.DateTime.Now.ToString("yyyyMMdd"));
+                    var groupName = string.Format("UpdateGroup_{0}", System.DateTime.Now.ToString("yyyyMMddHHmmss"));
                     ContentUpdateScript.CreateContentUpdateGroup(settings, entries, groupName);
                     var group = settings.FindGroup(groupName);
                     BundledAssetGroupSchema bagSchema = group.GetSchema<BundledAssetGroupSchema>();
@@ -86,7 +93,11 @@ public class AddressablesEditor
     [MenuItem("Tools/Asset Management/Build Player Content")]
     public static void BuildPlayerContent()
     {
-        UpdatePlayerContent();
+        if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            AssetDatabase.SaveAssets();
+            UpdatePlayerContent();
+        }
     }
 
     public static void UpdatePlayerContent(string activeProfileId = "Default")
@@ -102,5 +113,25 @@ public class AddressablesEditor
         AddressableAssetSettings.BuildPlayerContent();
         EditorUtility.SetDirty(settings);
         AssetDatabase.Refresh();
+    }
+
+    [MenuItem("Tools/Shader/ReplaceBuiltinShader")]
+    public static void ReplaceBuiltinShader()
+    {
+        var matGuids = AssetDatabase.FindAssets("t:Material", new string[] { "Assets" });
+        for (var idx = 0; idx < matGuids.Length; ++idx)
+        {
+            var guid = matGuids[idx];
+            EditorUtility.DisplayProgressBar(string.Format("批处理中...{0}/{1}", idx + 1, matGuids.Length), "替换shader", (idx + 1.0f) / matGuids.Length);
+            var mat = AssetDatabase.LoadAssetAtPath<Material>(AssetDatabase.GUIDToAssetPath(guid));
+            mat.shader = Shader.Find(mat.shader.name);
+            var serializedObject = new SerializedObject(mat);
+            serializedObject.ApplyModifiedProperties();
+        }
+
+        AssetDatabase.SaveAssets();
+        EditorUtility.ClearProgressBar();
+
+        Debug.Log("replace all system shader is done!");
     }
 }

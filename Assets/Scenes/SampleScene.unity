@@ -134,12 +134,12 @@ GameObject:
   - component: {fileID: 482415420}
   - component: {fileID: 482415419}
   m_Layer: 5
-  m_Name: ClearCache
+  m_Name: Demo Scene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &482415417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205.9, y: 123}
+  m_AnchoredPosition: {x: 159, y: -163}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &482415419
@@ -203,8 +203,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: ClearCache
+      - m_Target: {fileID: 1853077636}
+        m_MethodName: OpenScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -355,7 +355,6 @@ GameObject:
   - component: {fileID: 815643242}
   - component: {fileID: 815643241}
   - component: {fileID: 815643240}
-  - component: {fileID: 815643239}
   m_Layer: 5
   m_Name: ChangleColor
   m_TagString: Untagged
@@ -380,33 +379,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 119, y: -133}
+  m_AnchoredPosition: {x: -16.5, y: -163}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &815643239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 815643237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 035489883030191499092a5c3cf3bc17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shpereMatRef:
-    m_AssetGUID: 5e5816aa88df6db4b9c4c93f6db9db49
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  cubeMatRef:
-    m_AssetGUID: ba3b542d00f94af40bddf9ef5f6dfd3b
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  sphereRenderer: {fileID: 1191026818}
-  cubeRenderer: {fileID: 833072753535261822}
 --- !u!114 &815643240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,7 +425,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 815643239}
+      - m_Target: {fileID: 1853077636}
         m_MethodName: ChangeColor
         m_Mode: 1
         m_Arguments:
@@ -835,7 +810,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Clear Cache
+  m_Text: Demo Scene
 --- !u!222 &1309651304
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -998,6 +973,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1853077635}
   - component: {fileID: 1853077634}
+  - component: {fileID: 1853077636}
   m_Layer: 0
   m_Name: AddressableManager
   m_TagString: Untagged
@@ -1031,6 +1007,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1853077636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853077633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035489883030191499092a5c3cf3bc17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneRef:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  shpereMatRef:
+    m_AssetGUID: 5e5816aa88df6db4b9c4c93f6db9db49
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  cubeMatRef:
+    m_AssetGUID: ba3b542d00f94af40bddf9ef5f6dfd3b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  sphereRenderer: {fileID: 1191026818}
+  cubeRenderer: {fileID: 833072753535261822}
 --- !u!1 &2065386452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,7 +1072,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -113, y: -133}
+  m_AnchoredPosition: {x: -198.7, y: -163}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2065386454

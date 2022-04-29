@@ -1,0 +1,233 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UpdateGroup_20220429200312
+  m_EditorClassIdentifier: 
+  m_GroupName: UpdateGroup_20220429200312
+  m_Data:
+    m_SerializedData: []
+  m_GUID: eae41c1c094ebbc4987b3eb70682a327
+  m_SerializeEntries:
+  - m_GUID: 64b38bb91fabee34da837b8d77c6e9fd
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/AutoLight.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9edeee5c71de0694c81e7742ef53f352
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/GLSLSupport.glslinc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 29a358391e0e70d4a997aa03fc724b3f
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/HLSLSupport.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 35d3f3e193372d64499c9ca56dc08d69
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/Lighting.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1d8d49a97f9bd724db961bcaaad667bf
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/SpeedTree8Common.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d3371b82d55dc4a4e8980f1881b87461
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/SpeedTreeBillboardCommon.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a2ac3b29e39c10240886af635242e6c7
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/SpeedTreeCommon.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 79e6cbeb90eb4fd4db4ef24854bfbb00
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/SpeedTreeVertex.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ec4b2979bd6733b418a8e024cb757113
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/SpeedTreeWind.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f742a45203aa31d4d830f5010649a9f7
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/TerrainEngine.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8fde469896ee9214287c53b6ea568626
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/TerrainPreview.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e2f91c896ce6ae948b737ef73a6ca953
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/TerrainSplatmapCommon.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c62fa45a27379ad4b97e818a7aa92fbc
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/TerrainTool.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 00d2f083372ce764f868d244ece507f1
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/Tessellation.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 67ab7dc872c48e6468daedd52e5ddea8
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/TextCoreProperties.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: c0656e8854a204249abe0e870679c3d6
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityBuiltin2xTreeLibrary.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 776243360c642234b9c869f8186c71a3
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityBuiltin3xTreeLibrary.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 443ae42933c11d84a9ddc8c535381897
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityCG.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: daeabdd192a32e84eb5a6e47151eb4c6
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityCG.glslinc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 0cf04e7232ce43449a64d77407ed3ca1
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityCustomRenderTexture.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b1e85dad7e8b14b408732d9732822e4d
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityDeferredLibrary.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6911cace5b26109459223d08ecf8c0ab
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityDeprecated.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a2aee8325ab25d44db9bbfdac3b49ee3
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityGBuffer.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 50d682a8adf85ae4eb09000a437dfe9d
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityGlobalIllumination.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9e233bb1544213e4692775ca937c0e4a
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityImageBasedLighting.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a0f0258b3012b4245921f8970f83a85b
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityInstancing.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6364835886ffb1e4aaf1b74bda21fb4d
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityLightingCommon.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5d2d5473bf316d14e8db7dc14d8bfb59
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityMetaPass.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 58860dec6a944b64fb74f34b47317680
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityPBSLighting.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 580d3517c04ea824dbac682bd60e98ef
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityRayTracingMeshUtils.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6ca01e9ae1ad27444bb76806e4158e35
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityShaderUtilities.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5668a5916d07a1f468e8a68840ff7237
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityShaderVariables.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 6cdd4eef1687be6479921bab31b5b2f1
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityShadowLibrary.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: f04c30ed507016940844977b6bc4ba4e
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnitySprites.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 895dd881f97f4064d860f94524519217
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardBRDF.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9c7c7a51880da5d4fb51480a44b6ec59
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardConfig.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d69ec8467a2a3f1418c0edac490e807c
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardCore.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b3313618680994142b6461fa6bbeb2b8
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardCoreForward.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e2ee526879e6edc40a91718d209f1e19
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardCoreForwardSimple.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 15fa5f7467a8d7341aad0b66ee3200c8
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardInput.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4f0fa89b33f45594f9583ee8daff2229
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardMeta.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d15aaa05afd836942bd1932d4e0a41f1
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardParticleEditor.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5c3d6448aa8a6fd4d84356834d0c1b6f
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardParticleInstancing.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 605bdad764b86b349ba48514d24281d4
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardParticles.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2ea816aa6805e82499d64c92e7bf6f97
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardParticleShadow.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 7d94955f2e667f848ba43384c675d3df
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardShadow.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 3c64bbb81757ec54f81588256add9b19
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStandardUtils.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4093f5156b1aa7747a73865ebd262e5a
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStereoExtensions.glslinc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: cbc6bd1a319554e4987211da8579db8c
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityStereoSupport.glslinc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9123f2b376312384ea80f7dcb1626793
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityUI.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 05ade17d281b7fe4695c56a6fe721950
+    m_Address: Assets/Shaders/builtin_shaders/CGIncludes/UnityUIE.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e28baef2ae13bae409883a3e89955ad9
+    m_Address: Assets/Shaders/builtin_shaders/DefaultResources/Internal-Skinning-Util.cginc
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9f22de0672d694041a2a99566a4c0beb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 266614c59506c004da285b6c272fe023, type: 2}
+    - {fileID: 11400000, guid: 2cd592c0d6d24ec4891c3b2d1ccd1cb9, type: 2}
