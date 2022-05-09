@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 444920fe58807f64995110d2e98cec82
   m_SerializeEntries:
   - m_GUID: 9806df7aa3d278c4082dee83a3f83d43
-    m_Address: Assets/Shaders/builtin_shaders
+    m_Address: EngineShaders
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EasyProgressBar;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -7,6 +8,8 @@ using UnityEngine.ResourceManagement.ResourceProviders;
 
 public class AddressableTest : MonoBehaviour
 {
+    public ProgressBar progressBar;
+    public AddressableManager addressableManager;
 
     public AssetReference sceneRef;
     public AssetReference shpereMatRef;
@@ -22,11 +25,6 @@ public class AddressableTest : MonoBehaviour
 
     public void OpenScene()
     {
-        //if (!sceneRef.RuntimeKeyIsValid())
-        //{
-        //    return;
-        //}
-
         sceneHandle = Addressables.LoadSceneAsync("Demo");
         sceneHandle.Completed += (op) =>
         {
@@ -38,6 +36,28 @@ public class AddressableTest : MonoBehaviour
 
             Debug.Log("Open demo scene succeeded");
         };
+    }
+
+    public void CheckAndUpdate()
+    {
+        StartCoroutine(addressableManager.CheckAndDownLoad(OnCheckAndUpdate, OnUpdateProgress));
+    }
+
+    private void OnCheckAndUpdate(bool result)
+    {
+        if (result)
+        {
+            Debug.Log("Update Successes");
+        }
+        else
+        {
+            Debug.LogError("Update Failed");
+        }
+    }
+
+    private void OnUpdateProgress(float progress)
+    {
+        progressBar.FillAmount = progress;
     }
 
     public void ChangeColor()
@@ -68,13 +88,8 @@ public class AddressableTest : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (!shpereMatRef.RuntimeKeyIsValid() || !cubeMatRef.RuntimeKeyIsValid())
-        {
-            return;
-        }
-
-        //Addressables.Release(sceneRef);
-        //Addressables.Release(cubeMatRef);
-        //Addressables.Release(shpereMatRef);
+        Addressables.Release(sceneRef);
+        Addressables.Release(cubeMatRef);
+        Addressables.Release(shpereMatRef);
     }
 }

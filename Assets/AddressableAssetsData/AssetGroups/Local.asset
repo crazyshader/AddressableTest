@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Local
+  m_EditorClassIdentifier: 
+  m_GroupName: Local
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 0e57401d6f876024aa22b3415e4d0b19
+  m_SerializeEntries:
+  - m_GUID: 5e5816aa88df6db4b9c4c93f6db9db49
+    m_Address: Sphere
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: fee87e81e01cfde4d888231343bc221e
+    m_Address: ProgressBar
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 28c657daecfa44144b67fa48b3856071
+    m_Address: Sphere
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ba3b542d00f94af40bddf9ef5f6dfd3b
+    m_Address: Cube
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 67ff6773b57fe15428ac1f00d7df321b
+    m_Address: Default
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9464affb610736d4595153f9b4be846d
+    m_Address: Skybox
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a1879c0702920214b83cd5d5b5a4e96f
+    m_Address: Cube
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9f22de0672d694041a2a99566a4c0beb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 25bd6c200d926c040946cb58a9c5dd89, type: 2}
+    - {fileID: 11400000, guid: 2105f9ff63c19db42b6c787eeca002dc, type: 2}

@@ -7,6 +7,7 @@ using System.Text;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.SceneManagement;
+using System.Collections.Generic;
 
 public class AddressablesEditor
 {
@@ -115,6 +116,7 @@ public class AddressablesEditor
         AssetDatabase.Refresh();
     }
 
+    /*
     [MenuItem("Tools/Shader/ReplaceBuiltinShader")]
     public static void ReplaceBuiltinShader()
     {
@@ -134,4 +136,5 @@ public class AddressablesEditor
 
         Debug.Log("replace all system shader is done!");
     }
+    */
 }

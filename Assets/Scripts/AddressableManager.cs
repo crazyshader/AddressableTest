@@ -13,6 +13,7 @@ public class AddressableManager : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(this);
         StartCoroutine(Initialize());
     }
 
@@ -28,12 +29,7 @@ public class AddressableManager : MonoBehaviour
         return string.Empty;
     }
 
-    public void CheckAndUpdate()
-    {
-        StartCoroutine(CheckAndDownLoad());
-    }
-
-    private IEnumerator CheckAndDownLoad()
+    public IEnumerator CheckAndDownLoad(Action<bool> finishedAction, Action<float> updateAction)
     {
         // 1. 检查更新清单
         AsyncOperationHandle<List<string>> checkHandle = Addressables.CheckForCatalogUpdates(false);
@@ -46,6 +42,7 @@ public class AddressableManager : MonoBehaviour
             {
                 Debug.Log("No need update catalog.");
                 Addressables.Release(checkHandle);
+                finishedAction?.Invoke(false);
                 yield break;
             }
         }
@@ -53,6 +50,7 @@ public class AddressableManager : MonoBehaviour
         {
             Debug.Log("Check catalog failed.");
             Addressables.Release(checkHandle);
+            finishedAction?.Invoke(false);
             yield break;
         }
 
@@ -82,6 +80,7 @@ public class AddressableManager : MonoBehaviour
             Debug.Log("No Need update assets");
             Addressables.Release(updateHandler);
             Addressables.Release(checkHandle);
+            finishedAction?.Invoke(false);
             yield break;
         }
 
@@ -95,6 +94,7 @@ public class AddressableManager : MonoBehaviour
             Addressables.Release(downLoadSizeHandle);
             Addressables.Release(updateHandler);
             Addressables.Release(checkHandle);
+            finishedAction?.Invoke(false);
             yield break;
         }
 
@@ -103,6 +103,7 @@ public class AddressableManager : MonoBehaviour
         while (!downLoadHandle.IsDone)
         {
             float downloadPercent = downLoadHandle.PercentComplete;
+            updateAction?.Invoke(downloadPercent);
             Debug.Log($"{downLoadHandle.Result} = percent {(int)(totalDownloadSize * downloadPercent)}/{totalDownloadSize}");
             yield return waitEnd;
         }
@@ -113,6 +114,7 @@ public class AddressableManager : MonoBehaviour
         Addressables.Release(downLoadSizeHandle);
         Addressables.Release(updateHandler);
         Addressables.Release(checkHandle);
+        finishedAction?.Invoke(true);
     }
 
     public void ClearCache()
