@@ -7,15 +7,23 @@ using System.Text;
 using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.SceneManagement;
-using System.Collections.Generic;
+using UnityEditor.Build.Pipeline.Utilities;
 
 public class AddressablesEditor
 {
+    [MenuItem("Tools/Asset Management/Clean Build")]
+    public static void CleanBuild()
+    {
+        AddressableAssetSettings.CleanPlayerContent(null);
+        BuildCache.PurgeCache(true);
+    }
+
     [MenuItem("Tools/Asset Management/Build Content Update")]
     public static string BuildContentUpdate()
     {
         if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
         {
+            AssetDatabase.Refresh();
             AssetDatabase.SaveAssets();
             return CheckAndUpdateContent();
         }
@@ -25,7 +33,6 @@ public class AddressablesEditor
 
     public static string CheckAndUpdateContent(string activeProfileId = "Default")
     {
-        bool buildPlayerContent = true;
         var settings = AddressableAssetSettingsDefaultObject.Settings;
         if (settings != null && settings.BuildRemoteCatalog)
         {
@@ -34,11 +41,9 @@ public class AddressablesEditor
             string binPath = ContentUpdateScript.GetContentStateDataPath(false);
             if (File.Exists(binPath))
             {
-                buildPlayerContent = false;
-
-
                 // 检测是否有更新的资源
                 var entries = ContentUpdateScript.GatherModifiedEntries(settings, binPath);
+                Debug.Log($"GatherModifiedEntries Count:{entries.Count}");
                 if (entries.Count > 0)
                 {
                     StringBuilder entryList = new StringBuilder();
@@ -57,29 +62,45 @@ public class AddressablesEditor
                         bagSchema = group.AddSchema<BundledAssetGroupSchema>();
                     }
 
-                    //var defultBAGSchema = settings.DefaultGroup.GetSchema<BundledAssetGroupSchema>();
-                    //bagSchema.BuildPath.SetVariableByName(settings, defultBAGSchema.BuildPath.GetName(settings));
-                    //bagSchema.LoadPath.SetVariableByName(settings, defultBAGSchema.LoadPath.GetName(settings));
                     bagSchema.BuildPath.SetVariableByName(settings, "RemoteBuildPath");
                     bagSchema.LoadPath.SetVariableByName(settings, "RemoteLoadPath");
 
+                    ContentUpdateGroupSchema cugScheam = group.GetSchema<ContentUpdateGroupSchema>();
+                    if (cugScheam == null)
+                    {
+                        cugScheam = group.AddSchema<ContentUpdateGroupSchema>();
+                    }
+
+                    cugScheam.StaticContent = false;
+
                     Debug.Log($"Update content:{entryList}");
-                    EditorUtility.SetDirty(settings);
-                    AssetDatabase.Refresh();
                 }
 
+                // 设置默认分组为远程路径，确保更新资源引用的引擎内置Shader可以打包到远程
+                var defultBAGSchema = settings.DefaultGroup.GetSchema<BundledAssetGroupSchema>();
+                defultBAGSchema.BuildPath.SetVariableByName(settings, "RemoteBuildPath");
+                defultBAGSchema.LoadPath.SetVariableByName(settings, "RemoteLoadPath");
+
+                ContentUpdateGroupSchema defaultCUGSchema = settings.DefaultGroup.GetSchema<ContentUpdateGroupSchema>();
+                if (defaultCUGSchema == null)
+                {
+                    defaultCUGSchema = settings.DefaultGroup.AddSchema<ContentUpdateGroupSchema>();
+                }
+                defaultCUGSchema.StaticContent = false;
+
                 // 使用资源更新的打包方式
+                EditorUtility.SetDirty(settings);
+                AssetDatabase.Refresh();
                 ContentUpdateScript.BuildContentUpdate(settings, binPath);
+            }
+            else
+            {
+                Debug.LogError("ContentStateDataPath is not exist.");
             }
         }
 
-        // 使用默认的资源打包方式
-        if (buildPlayerContent)
-        {
-            AddressableAssetSettings.BuildPlayerContent();
-        }
-
         AssetDatabase.Refresh();
+        AssetDatabase.SaveAssets();
 
         if (settings != null && settings.BuildRemoteCatalog)
         {
@@ -96,6 +117,7 @@ public class AddressablesEditor
     {
         if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
         {
+            AssetDatabase.Refresh();
             AssetDatabase.SaveAssets();
             UpdatePlayerContent();
         }
@@ -111,30 +133,21 @@ public class AddressablesEditor
 
             AddressableAssetSettings.CleanPlayerContent(settings.ActivePlayerDataBuilder);
         }
+
+        // 设置默认分组为本地路径，确保全量打包资源引用的引擎内置Shader可以打包到本地
+        var defultBAGSchema = settings.DefaultGroup.GetSchema<BundledAssetGroupSchema>();
+        defultBAGSchema.BuildPath.SetVariableByName(settings, "LocalBuildPath");
+        defultBAGSchema.LoadPath.SetVariableByName(settings, "LocalLoadPath");
+
+        ContentUpdateGroupSchema defaultCUGSchema = settings.DefaultGroup.GetSchema<ContentUpdateGroupSchema>();
+        if (defaultCUGSchema == null)
+        {
+            defaultCUGSchema = settings.DefaultGroup.AddSchema<ContentUpdateGroupSchema>();
+        }
+        defaultCUGSchema.StaticContent = true;
+
         AddressableAssetSettings.BuildPlayerContent();
         EditorUtility.SetDirty(settings);
         AssetDatabase.Refresh();
     }
-
-    /*
-    [MenuItem("Tools/Shader/ReplaceBuiltinShader")]
-    public static void ReplaceBuiltinShader()
-    {
-        var matGuids = AssetDatabase.FindAssets("t:Material", new string[] { "Assets" });
-        for (var idx = 0; idx < matGuids.Length; ++idx)
-        {
-            var guid = matGuids[idx];
-            EditorUtility.DisplayProgressBar(string.Format("批处理中...{0}/{1}", idx + 1, matGuids.Length), "替换shader", (idx + 1.0f) / matGuids.Length);
-            var mat = AssetDatabase.LoadAssetAtPath<Material>(AssetDatabase.GUIDToAssetPath(guid));
-            mat.shader = Shader.Find(mat.shader.name);
-            var serializedObject = new SerializedObject(mat);
-            serializedObject.ApplyModifiedProperties();
-        }
-
-        AssetDatabase.SaveAssets();
-        EditorUtility.ClearProgressBar();
-
-        Debug.Log("replace all system shader is done!");
-    }
-    */
 }

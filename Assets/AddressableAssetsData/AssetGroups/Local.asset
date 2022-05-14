@@ -17,34 +17,36 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 0e57401d6f876024aa22b3415e4d0b19
   m_SerializeEntries:
-  - m_GUID: 5e5816aa88df6db4b9c4c93f6db9db49
-    m_Address: Sphere
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: fee87e81e01cfde4d888231343bc221e
     m_Address: ProgressBar
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 28c657daecfa44144b67fa48b3856071
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e5816aa88df6db4b9c4c93f6db9db49
     m_Address: Sphere
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: ba3b542d00f94af40bddf9ef5f6dfd3b
-    m_Address: Cube
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 28c657daecfa44144b67fa48b3856071
+    m_Address: Sphere_Prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 67ff6773b57fe15428ac1f00d7df321b
-    m_Address: Default
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9464affb610736d4595153f9b4be846d
-    m_Address: Skybox
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a1879c0702920214b83cd5d5b5a4e96f
     m_Address: Cube
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ba3b542d00f94af40bddf9ef5f6dfd3b
+    m_Address: Cube
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef7df0e59c0d1a64c964bd6c04bc87d3
+    m_Address: 0_Native
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9f22de0672d694041a2a99566a4c0beb, type: 2}
   m_SchemaSet:

@@ -21,6 +21,7 @@ MonoBehaviour:
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
   m_NonRecursiveBuilding: 0
+  m_CCDEnabled: 0
   m_maxConcurrentWebRequests: 500
   m_ContiguousBundles: 0
   m_StripUnityVersionFromBundleBuild: 0
@@ -28,21 +29,23 @@ MonoBehaviour:
   m_ShaderBundleNaming: 0
   m_ShaderBundleCustomNaming: 
   m_MonoScriptBundleNaming: 0
+  m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
     m_Id: d899a809c0ab69446ba510df783af281
   m_RemoteCatalogLoadPath:
     m_Id: 656731d3d6b8bd141a5075f1e937f528
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
+  m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
+  m_BuildAddressablesWithPlayerBuild: 2
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: 5e7f77928e10e88409baa1f006712af2, type: 2}
   - {fileID: 11400000, guid: 14a2d0c1a389c7e4d8bfbd7226d43be5, type: 2}
   - {fileID: 11400000, guid: f6afc076588b8ee409a49097e84b153f, type: 2}
-  - {fileID: 11400000, guid: 4567d611536224d459db49cdd9fdf2e8, type: 2}
-  - {fileID: 11400000, guid: 35c50be4b51f07243b53473cc2ac6c7d, type: 2}
-  - {fileID: 11400000, guid: 9840395bf4405fc4fa9281278cae1df9, type: 2}
-  - {fileID: 11400000, guid: 525eec660c8c1494ca06a7aab03f1492, type: 2}
+  - {fileID: 11400000, guid: 4fe5ddc9d54ca664dbb9f72a7399bc56, type: 2}
+  - {fileID: 11400000, guid: 9321d02ea84056f4cab64bd25dce80e8, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -63,7 +66,7 @@ MonoBehaviour:
       - m_Id: d899a809c0ab69446ba510df783af281
         m_Value: ServerData/[BuildTarget]
       - m_Id: 656731d3d6b8bd141a5075f1e937f528
-        m_Value: http://localhost:8000/[BuildTarget]
+        m_Value: http://10.228.24.36:8000/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 868b63d71ff969d49af5a1ded7cdf6d9
       m_Name: BuildTarget
@@ -84,6 +87,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - LuaScripts
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 43ed13005d9e286499d4b88b6a3ac74f, type: 2}

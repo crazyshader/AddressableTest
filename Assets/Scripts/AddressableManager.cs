@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
@@ -9,7 +10,14 @@ using static UnityEngine.AddressableAssets.Addressables;
 
 public class AddressableManager : MonoBehaviour
 {
-    private WaitForEndOfFrame waitEnd = new WaitForEndOfFrame();
+    public enum UpdateState
+    {
+        NoNeedUpdate,
+        UpdateFailed,
+        UpdateSuccessed,
+    }
+
+    private WaitForEndOfFrame waitForEnd = new WaitForEndOfFrame();
 
     private void Start()
     {
@@ -21,7 +29,7 @@ public class AddressableManager : MonoBehaviour
     {
         var initHandle = Addressables.InitializeAsync();
         yield return initHandle;
-        StartCoroutine(ClearAllAsset());
+        //StartCoroutine(ClearAllAsset());
     }
 
     private string InternalIdTransformFunc(UnityEngine.ResourceManagement.ResourceLocations.IResourceLocation location)
@@ -29,8 +37,13 @@ public class AddressableManager : MonoBehaviour
         return string.Empty;
     }
 
-    public IEnumerator CheckAndDownLoad(Action<bool> finishedAction, Action<float> updateAction)
+    public IEnumerator CheckAndDownLoad(string catalogFilePath, Action<UpdateState> finishedAction, Action<float> updateAction)
     {
+        Addressables.ClearResourceLocators();
+        string catalogPath = @"C:/Unity/AddressableTest/ServerData/StandaloneWindows64/catalog.json";
+        AsyncOperationHandle<IResourceLocator> handle = Addressables.LoadContentCatalogAsync(catalogPath, true);
+        yield return handle;
+
         // 1. 检查更新清单
         AsyncOperationHandle<List<string>> checkHandle = Addressables.CheckForCatalogUpdates(false);
         yield return checkHandle;
@@ -40,17 +53,15 @@ public class AddressableManager : MonoBehaviour
             updateList = checkHandle.Result;
             if (updateList == null || updateList.Count == 0)
             {
-                Debug.Log("No need update catalog.");
                 Addressables.Release(checkHandle);
-                finishedAction?.Invoke(false);
+                finishedAction?.Invoke(UpdateState.NoNeedUpdate);
                 yield break;
             }
         }
         else
         {
-            Debug.Log("Check catalog failed.");
             Addressables.Release(checkHandle);
-            finishedAction?.Invoke(false);
+            finishedAction?.Invoke(UpdateState.UpdateFailed);
             yield break;
         }
 
@@ -69,7 +80,6 @@ public class AddressableManager : MonoBehaviour
                     if (item.Value.Count == 0) continue;
                     string key = item.Key.ToString();
                     if (int.TryParse(key, out int resKey)) continue;
-
                     if (!updateKeyList.Contains(key))
                         updateKeyList.Add(key);
                 }
@@ -77,10 +87,9 @@ public class AddressableManager : MonoBehaviour
         }
         if (updateKeyList == null || updateKeyList.Count == 0)
         {
-            Debug.Log("No Need update assets");
             Addressables.Release(updateHandler);
             Addressables.Release(checkHandle);
-            finishedAction?.Invoke(false);
+            finishedAction?.Invoke(UpdateState.NoNeedUpdate);
             yield break;
         }
 
@@ -90,31 +99,28 @@ public class AddressableManager : MonoBehaviour
         long totalDownloadSize = downLoadSizeHandle.Result;
         if (totalDownloadSize == 0)
         {
-            Debug.Log("Update size is zero");
             Addressables.Release(downLoadSizeHandle);
             Addressables.Release(updateHandler);
             Addressables.Release(checkHandle);
-            finishedAction?.Invoke(false);
+            finishedAction?.Invoke(UpdateState.NoNeedUpdate);
             yield break;
         }
 
         // 5.开始下载需要更新的资源
-        AsyncOperationHandle downLoadHandle = Addressables.DownloadDependenciesAsync(updateKeyList, MergeMode.None);
+        AsyncOperationHandle downLoadHandle = Addressables.DownloadDependenciesAsync(updateKeyList, MergeMode.Union);
         while (!downLoadHandle.IsDone)
         {
             float downloadPercent = downLoadHandle.PercentComplete;
             updateAction?.Invoke(downloadPercent);
             Debug.Log($"{downLoadHandle.Result} = percent {(int)(totalDownloadSize * downloadPercent)}/{totalDownloadSize}");
-            yield return waitEnd;
+            yield return waitForEnd;
         }
-
-        Debug.Log("Download content finished");
 
         Addressables.Release(downLoadHandle);
         Addressables.Release(downLoadSizeHandle);
         Addressables.Release(updateHandler);
         Addressables.Release(checkHandle);
-        finishedAction?.Invoke(true);
+        finishedAction?.Invoke(UpdateState.UpdateSuccessed);
     }
 
     public void ClearCache()
